@@ -1,6 +1,7 @@
-#ifndef RENDERER_H
-#define RENDERER_H
+#ifndef RENDERER_HPP
+#define RENDERER_HPP
 
+#include "Constants.hpp"
 #include <cstdio>
 #include <cstring>
 #include <cmath>
@@ -8,17 +9,15 @@
 
 class Renderer {
 private:
-    char buffer[25][257];  // mapHeight=25, mapWidth=256+1
-
-    char GetDisplayChar(wchar_t wch);
-
+    char buffer[MAP_HEIGHT][MAP_WIDTH + 1];
+    HANDLE hOutput;
 public:
+    Renderer();
     void Clear();
-    void DrawChar(int x, int y, wchar_t symbol);
-    void DrawObject(float x, float y, float width, float height, wchar_t symbol);
+    void DrawChar(int x, int y, char c);
+    void DrawRect(float x, float y, float w, float h, char c);
     void DrawScore(int score);
     void Present(int playerX);
-    void SetCursor(int x, int y);
 };
 
 #endif
