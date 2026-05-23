@@ -32,6 +32,7 @@ public:
     void LoadLevel(int lvl);
     void Update();
     void Draw(Renderer& renderer);
+	void MovePlayer(float dx);
 
     Player& GetPlayer() { return player; }
     int GetCurrentLevel() const { return currentLevel; }
